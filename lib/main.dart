@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_layout/diferentes_tamanhos.dart';
 import 'package:responsive_layout/loja_virtual.dart';
@@ -19,18 +20,25 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      //home: ResponsividadeMediaQuery(),
-      //home: ResponsividadeRowCol(),
-      //home: ResponsividadeWrape(),
-      //home: Orientacao(),
-      //home: RegrasLayout()
-      //home: LojaVirtual(),
-      //home: TamanhoTextos(),
-      //home: TamanhoProporcional(),
-      home: DiferentesTamanhos(),
-    );
+    return DevicePreview(builder: (context){
+      return MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+
+        //devide preview
+        useInheritedMediaQuery: true,
+        locale: DevicePreview.locale(context),
+
+        //home: ResponsividadeMediaQuery(),
+        //home: ResponsividadeRowCol(),
+        //home: ResponsividadeWrape(),
+        //home: Orientacao(),
+        //home: RegrasLayout()
+        home: LojaVirtual(),
+        //home: TamanhoTextos(),
+        //home: TamanhoProporcional(),
+        //home: DiferentesTamanhos(),
+      );
+    });
   }
 }
